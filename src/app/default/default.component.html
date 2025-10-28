@@ -1,0 +1,9 @@
+@if (currentUser$ | async; as user) {
+  <div>
+    <h4>Welcome {{ user.firstName }}</h4>
+  </div>
+  <button (click)="logout()">Logout</button>
+} 
+@else {
+  <p>Please wait...</p>
+}

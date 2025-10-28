@@ -1,0 +1,22 @@
+@if (errorMsg()) {
+  <strong>
+    {{ errorMsg() }}
+  </strong>
+}
+<form [formGroup]="form" (ngSubmit)="login()">
+  <label for="username">Username</label> <br>
+  <input formControlName="username" type="text" name="username" required /> <br>
+  @if (username?.hasError('required') && (username?.dirty || username?.touched)) {
+    <small>Username is required</small> <br>
+  }
+
+  <label for="password">Password</label> <br>
+  <input formControlName="password" type="password" name="password" required> <br>
+  @if (form.get("password")?.hasError('required') && (password?.dirty || password?.touched)) {
+    <small>Password is required</small>
+  }
+  <br>
+    <button type="submit" [disabled]="loading()">
+      {{ loading() ? 'Please wait...' : 'Login' }}
+    </button>
+  </form>
